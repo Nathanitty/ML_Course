@@ -16,11 +16,9 @@ def compute_gradient(y, tx, w):
     Returns:
         An array of shape (2, ) (same shape as w), containing the gradient of the loss at w.
     """
-    # ***************************************************
-    # INSERT YOUR CODE HERE
-    # TODO: compute gradient vector
-    # ***************************************************
-    raise NotImplementedError
+    e = y - tx @ w
+    grad = -(1 / len(y)) * (tx.T @ e)
+    return grad
 
 
 def gradient_descent(y, tx, initial_w, max_iters, gamma):
