@@ -58,3 +58,17 @@ def build_model_data(height, weight):
     num_samples = len(y)
     tx = np.c_[np.ones(num_samples), x]
     return y, tx
+
+def compute_mse(y, tx, w):
+    """Calculate the loss using either MSE or MAE.
+
+    Args:
+        y: shape=(N, )
+        tx: shape=(N,2)
+        w: shape=(2,). The vector of model parameters.
+
+    Returns:
+        the value of the loss (a scalar), corresponding to the input parameters w.
+    """
+    e = y - tx @ w
+    return (1 / (2 * len(y))) * np.dot(e, e)
